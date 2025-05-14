@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Animation with JavaScript Trigger</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="animatedBox"></div>
+<button id="startButton">Start Animation</button>
+
+<script>
+// Store some data in localStorage
+  localStorage.setItem('animationState', 'ready');
+  const box = document.getElementById('animatedBox');
+  const startButton = document.getElementById('startButton');
+  startButton.addEventListener('click', () => {
+// Retrieve data from localStorage
+    const state = localStorage.getItem('animationState');
+    console.log('Animation State:', state);
+//start the animation
+    box.classList.add('slide-right');
+    localStorage.setItem('animationState', 'running');
+    setTimeout(() => {
+      box.classList.remove('slide-right');
+      localStorage.setItem('animationState', 'finished');
+    }, 2000); 
+  });
+</script>
+
+</body>
+</html>
